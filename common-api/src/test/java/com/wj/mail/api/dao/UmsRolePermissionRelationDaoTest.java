@@ -31,7 +31,6 @@ public class UmsRolePermissionRelationDaoTest {
 
     @Test
     public void testMethod() throws Exception {
-        long currectTimeMills = System.currentTimeMillis();
         // 并发测试工具
         CountDownLatchUtil countDownLatchUtil = new CountDownLatchUtil(10);
         countDownLatchUtil.latch(() -> umsRolePermissionRelationDao.getPermissionList(2L));
