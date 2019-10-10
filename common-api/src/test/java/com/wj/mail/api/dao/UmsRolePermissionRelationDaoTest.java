@@ -1,5 +1,6 @@
 package com.wj.mail.api.dao;
 
+import com.wj.mail.api.utils.CountDownLatchUtil;
 import com.wj.mail.dao.UmsRolePermissionRelationDao;
 import com.wj.mail.model.UmsPermission;
 import org.junit.Test;
@@ -26,5 +27,13 @@ public class UmsRolePermissionRelationDaoTest {
     public void testGetPermissionList() {
         List<UmsPermission> umsPermissionList = umsRolePermissionRelationDao.getPermissionList(2L);
         umsPermissionList.forEach(umsPermission -> System.out.println(umsPermission.toString()));
+    }
+
+    @Test
+    public void testMethod() throws Exception {
+        long currectTimeMills = System.currentTimeMillis();
+        // 并发测试工具
+        CountDownLatchUtil countDownLatchUtil = new CountDownLatchUtil(10);
+        countDownLatchUtil.latch(() -> umsRolePermissionRelationDao.getPermissionList(2L));
     }
 }
