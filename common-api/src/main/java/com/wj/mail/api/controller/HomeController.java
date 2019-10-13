@@ -1,4 +1,4 @@
-package com.wj.mail.api.Controller;
+package com.wj.mail.api.controller;
 
 import com.wj.mail.api.common.CommonResult;
 import com.wj.mail.api.domin.ProductDetails;
