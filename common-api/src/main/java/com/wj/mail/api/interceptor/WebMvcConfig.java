@@ -17,6 +17,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Autowired
     private JwtInterceptor jwtInterceptor;
 
+    @Autowired
+    private ApiIdempotentInterceptor apiIdempotentInterceptor;
+
     /**
      * 添加jwt拦截器
      * @param registry
@@ -25,6 +28,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(jwtInterceptor)
                 // 拦截所有请求，通过判断是否有 @JwtToken 注解 决定是否需要登录
+                .addPathPatterns("/**");
+        registry.addInterceptor(apiIdempotentInterceptor)
+                // 拦截所有请求，通过判断是否有 @ApiIdempotent 注解 判断幂等性
                 .addPathPatterns("/**");
     }
 

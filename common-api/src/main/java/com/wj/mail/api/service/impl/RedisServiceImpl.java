@@ -73,6 +73,16 @@ public class RedisServiceImpl implements RedisService {
     }
 
     /**
+     * 删除数据
+     *
+     * @param key
+     */
+    @Override
+    public boolean removeWithResult(String key) {
+        return stringRedisTemplate.delete(key);
+    }
+
+    /**
      * 自增操作
      *
      * @param key

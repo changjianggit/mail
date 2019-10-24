@@ -39,6 +39,11 @@ public interface RedisService {
     void remove(String key);
 
     /**
+     * 删除数据
+     */
+    boolean removeWithResult(String key);
+
+    /**
      * 自增操作
      * @param delta 自增步长
      */
