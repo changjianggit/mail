@@ -35,4 +35,11 @@ public class UmsRolePermissionRelationDaoTest {
         CountDownLatchUtil countDownLatchUtil = new CountDownLatchUtil(10);
         countDownLatchUtil.latch(() -> umsRolePermissionRelationDao.getPermissionList(2L));
     }
+
+    @Test
+    public void testMethod1() throws Exception {
+        // 并发测试工具
+        CountDownLatchUtil countDownLatchUtil = new CountDownLatchUtil(10);
+        countDownLatchUtil.latch(() -> umsRolePermissionRelationDao.getPermissionList(3L));
+    }
 }
